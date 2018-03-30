@@ -1,0 +1,15 @@
+avr-gcc -I. -I./ -mmcu=atmega8  -std=c99 -O2 -fpack-struct -fshort-enums -funsigned-bitfields -funsigned-char -Wall -Wstrict-prototypes -Wa,-ahlms=main.lst -DF_CPU=11059200UL  -c main.c
+main.c: In function ‘main’:
+main.c:137:30: warning: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+                         cptr = get_cmd_name(i++);
+                              ^
+avr-gcc -I. -I./ -mmcu=atmega8  -std=c99 -O2 -fpack-struct -fshort-enums -funsigned-bitfields -funsigned-char -Wall -Wstrict-prototypes -Wa,-ahlms=usart.lst -DF_CPU=11059200UL  -c usart.c
+avr-gcc -I. -I./ -mmcu=atmega8  -std=c99 -O2 -fpack-struct -fshort-enums -funsigned-bitfields -funsigned-char -Wall -Wstrict-prototypes -Wa,-ahlms=interpreter.lst -DF_CPU=11059200UL  -c interpreter.c
+avr-gcc -I. -I./ -mmcu=atmega8  -std=c99 -O2 -fpack-struct -fshort-enums -funsigned-bitfields -funsigned-char -Wall -Wstrict-prototypes -Wa,-ahlms=drv_8825.lst -DF_CPU=11059200UL  -c drv_8825.c
+avr-gcc -I. -I./ -mmcu=atmega8  -std=c99 -O2 -fpack-struct -fshort-enums -funsigned-bitfields -funsigned-char -Wall -Wstrict-prototypes -Wa,-ahlms=utils.lst -DF_CPU=11059200UL  -c utils.c
+avr-gcc -I. -I./ -mmcu=atmega8  -std=c99 -O2 -fpack-struct -fshort-enums -funsigned-bitfields -funsigned-char -Wall -Wstrict-prototypes -Wa,-ahlms=messages.lst -DF_CPU=11059200UL  -c messages.c
+avr-gcc -Wl,-Map,step_confignode.out.map -lm -B/usr/avr/lib/ -B/usr/avr/lib/avr4/ -B/usr/i686-pc-linux-gnu/avr/lib -B/usr/avr/lib/avr5/  -mmcu=atmega8  -o step_confignode.out main.o usart.o interpreter.o drv_8825.o utils.o messages.o    
+collect2: fatal error: ld terminated with signal 6 [Прекъснат], core dumped
+compilation terminated.
+Makefile:244: recipe for target 'step_confignode.out' failed
+make: *** [step_confignode.out] Error 1
